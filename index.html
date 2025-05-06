@@ -6,113 +6,167 @@
         <meta name="description" content="A tribute profile to Itachi Uchiha – the shadow hero of the Naruto universe.">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <icon href="assets/sasuke-mangekyou.png" type="image/png" sizes="16x16" />
+        <title><a href="https://www.stud.fit.vutbr.cz/~xvrtild00/">Itachi Website</a></title>
+
+        <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
         
-        <title>Itachi Uchiha – Profile of a Legend</title>
-        <link rel="stylesheet" href="css/style.css" />
+        <!-- JQuery -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        
+        <!-- My files -->
+        <link rel="stylesheet" href="css/style.css"/>
+        <script src="js/sharinganMenu.js" defer></script>
         <script src="js/script.js" defer></script>
+        <script src="js/toggleDWmode.js" defer></script>
+
     </head>
     <body>
-        <!-- Na začátek body -->
-        <!-- <div class="loader">
-            <div class="sharingan-loader"></div>
-        </div> -->
-
-        <!-- Navigation -->
         <header>
             <nav class="navbar">
-            <div class="logo">ITACHI</div>
-            <ul class="nav-links">
-                <li><a href="#intro">Home</a></li>
-                <li><a href="#biography">Biography</a></li>
-                <li><a href="#abilities">Abilities</a></li>
-                <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#quotes">Quotes</a></li>
-            </ul>
+                <div class="logo"><a href="https://www.stud.fit.vutbr.cz/~xvrtild00/" target="_blank">ITACHI</a></div>
+                <button class="sharingan-menu">
+                    <img src="assets/itachi-mangekyou.png" alt="Menu"/>
+                </button>
+                <ul class="nav-links">
+                    <li><a href="#intro">Home</a></li>
+                    <li><a href="#biography">Biography</a></li>
+                    <li><a href="#abilities">Abilities</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#quotes">Quotes</a></li>
+                </ul>
             </nav>
         </header>
 
-        <!-- Hero Section -->
         <section id="intro" class="hero">
             <div class="hero-text">
-            <h1>Itachi Uchiha</h1>
-            <p>
-                A prodigy. A villain. A hero in the shadows.<br>
-                Welcome to the story of a man who carried the weight of peace through sacrifice.
-            </p>
+                <h1>Itachi Uchiha</h1>
+                <p>
+                    A prodigy. A villain. A hero in the shadows.<br>
+                    Welcome to the story of a man who carried the weight of peace through sacrifice.
+                </p>
             </div>
             <div class="hero-image">
-            <img src="assets/itachi-hero.png" alt="Itachi Uchiha full body silhouette">
+                <img src="assets/itachi-hero.jpg" alt="Itachi Uchiha full body silhouette">
             </div>
         </section>
 
-        <!-- Biography Section -->
         <section id="biography" class="content-section">
-            <h2>Biography</h2>
+            <h2 class="section-title">Biography</h2>
             <div class="bio-grid">
-            <article>
-                <h3>Childhood & Early Genius</h3>
-                <p>
-                Born during war, Itachi witnessed the cruelty of conflict from a young age.
-                By age 7, he was outperforming academy seniors; by 13, he became the youngest ANBU captain in history.
-                </p>
-            </article>
-
-            <article>
-                <h3>Uchiha Clan Downfall</h3>
-                <p>
-                Ordered by Konoha elders to prevent a coup, Itachi made an impossible choice — sacrificing his clan to save the village. 
-                Only one survived: his younger brother, Sasuke.
-                </p>
-            </article>
-
-            <article>
-                <h3>Akatsuki & The Masked Life</h3>
-                <p>
-                As a double agent, he joined the rogue Akatsuki group. To the world, a criminal. In truth, a silent protector watching over Sasuke from afar.
-                </p>
-            </article>
-
-            <article>
-                <h3>Timeline of Key Events</h3>
-                <ul>
-                <li><strong>Age 4:</strong> Witnesses Great Ninja War</li>
-                <li><strong>Age 7:</strong> Graduates from the academy</li>
-                <li><strong>Age 13:</strong> Becomes ANBU captain</li>
-                <li><strong>Clan Night:</strong> The Uchiha Massacre</li>
-                <li><strong>Final Act:</strong> Dies by Sasuke’s hand, truth revealed</li>
-                </ul>
-            </article>
+                <article class="bio-card">
+                    <div class="bio-content">
+                        <h3>Childhood & Early Genius</h3>
+                        <p>
+                            Born during war, Itachi witnessed the cruelty of conflict from a young age.
+                            By age 7, he was outperforming academy seniors; by 13, he became the youngest ANBU captain in history.
+                        </p>
+                    </div>
+                    <img src="assets/itachi-war.jpg" alt="Young Itachi in war" class="bio-image">
+                </article>
+            
+                <article class="bio-card">
+                    <div class="bio-content">
+                        <h3>Uchiha Clan Downfall</h3>
+                        <p>
+                            Ordered by Konoha elders to prevent a coup, Itachi made an impossible choice — sacrificing his clan to save the village. 
+                            Only one survived: his younger brother, Sasuke.
+                        </p>
+                    </div>
+                    <img src="assets/itachi-timeline.jpg" alt="Itachi timeline" class="bio-image">
+                </article>
+            
+                <article class="bio-card">
+                    <div class="bio-content">
+                        <h3>Akatsuki & The Masked Life</h3>
+                        <p>
+                            As a double agent, he joined the rogue Akatsuki group. To the world, a criminal. In truth, a silent protector watching over Sasuke from afar.
+                        </p>
+                    </div>
+                    <img src="assets/itachi-timeline.jpg" alt="Itachi timeline" class="bio-image">
+                </article>
+            
+                <article class="bio-card timeline-card">
+                    <div class="bio-content">
+                        <h3>Timeline of Key Events</h3>
+                        <ul class="timeline-list">
+                            <li><strong>Age 4:</strong> Witnesses Great Ninja War</li>
+                            <li><strong>Age 7:</strong> Graduates from the academy</li>
+                            <li><strong>Age 13:</strong> Becomes ANBU captain</li>
+                            <li><strong>Clan Night:</strong> The Uchiha Massacre</li>
+                            <li><strong>Final Act:</strong> Dies by Sasuke’s hand, truth revealed</li>
+                        </ul>
+                    </div>
+                    <img src="assets/itachi-timeline.jpg" alt="Itachi timeline" class="bio-image">
+                </article>
             </div>
         </section>
 
-        <!-- Abilities -->
-        <section id="abilities" class="content-section dark-theme">
+        <section id="abilities" class="content-section">
             <h2>Abilities & Techniques</h2>
-            <p>As one of the most powerful shinobi in history, Itachi wielded techniques feared by even the greatest warriors.</p>
-            <ul class="abilities-list">
-            <li><strong>Sharingan & Mangekyō Sharingan</strong> – Unrivaled genjutsu and precognition in battle</li>
-            <li><strong>Tsukuyomi</strong> – A torture illusion where seconds felt like days</li>
-            <li><strong>Amaterasu</strong> – Ever-burning black flames that consumed all</li>
-            <li><strong>Susanoo</strong> – A spectral warrior wielding the Sword of Totsuka and Yata Mirror</li>
-            <li><strong>Intelligence & Tactics</strong> – Mastermind strategist with unmatched foresight</li>
-            </ul>
+            <div class="abilities-grid">
+                <div class="ability-card">
+                    <div class="ability-image">
+                        <img src="./assets/itachi-mangekyou-closeup2.jpg" alt="Mangekyō">
+                    </div>
+                    <div class="ability-content">
+                        <h3>Sharingan & Mangekyō</h3>
+                        <p class="ability-sub">Genjutsu, foresight, and perception mastery</p>
+                        <p>Itachi's dojutsu allowed him to anticipate enemy moves and cast illusions with near-instant speed.</p>
+                    </div>
+                </div>
+          
+                <div class="ability-card">
+                    <div class="ability-image">
+                        <img src="./assets/itachi-tsukuyomi.jpg" alt="Tsukuyomi">
+                    </div>
+                    <div class="ability-content">
+                        <h3>Tsukuyomi</h3>
+                        <p class="ability-sub">Psychological torture in seconds</p>
+                        <p>His most feared genjutsu, trapping opponents in endless suffering within moments in real time. Itachi can control space, time everything.</p>
+                    </div>
+                </div>
+            
+                <div class="ability-card">
+                    <div class="ability-image">
+                        <img src="./assets/amaterasu-sharingan.jpg" alt="Amaterasu">
+                    </div>
+                    <div class="ability-content">
+                        <h3>Amaterasu</h3>
+                        <p class="ability-sub">Black flames that never die</p>
+                        <p>Summoned from his eyes, these flames could incinerate anything — even other fire-based jutsu.</p>
+                    </div>
+                </div>
+            
+                <div class="ability-card">
+                    <div class="ability-image">
+                        <img src="./assets/itachi-susanoo.jpg" alt="Susanoo">
+                    </div>
+                    <div class="ability-content">
+                        <h3>Susanoo</h3>
+                        <p class="ability-sub">Spectral guardian with divine weapons</p>
+                        <p>Summoning a massive ethereal warrior armed with the Sword of Totsuka and Yata Mirror, he became nearly untouchable.</p>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <!-- Gallery -->
         <section id="gallery" class="content-section">
             <h2>Gallery</h2>
             <p>Moments captured from both anime and fan art – the many faces of Itachi.</p>
             <div class="gallery-grid">
-            <img src="assets/gallery1.jpg" alt="Young Itachi training">
-            <img src="assets/gallery2.jpg" alt="Itachi in Akatsuki cloak">
-            <img src="assets/gallery3.jpg" alt="Mangekyō Sharingan close-up">
-            <img src="assets/gallery4.jpg" alt="Itachi and Sasuke final moment">
+                <img src="assets/itachi-young.jpg" alt="Young Itachi">
+                <img src="assets/itachi-anbu.jpg" alt="Itachi in Anbu">
+                <img src="assets/itachi-years.jpg" alt="Itachi through the years">
+                <img src="assets/itachi-shisui.jpg" alt="Itachi and Shisui">
+                <img src="assets/itachi-crown.jpg" alt="Itachi sharingan crown">
+                <img src="assets/itachi-sasuke.jpg" alt="Itachi and Sasuke forehead">
             </div>
         </section>
 
-        <!-- Quotes -->
         <section id="quotes" class="content-section quotes-section">
             <h2>Quotes & Philosophy</h2>
             <blockquote>
@@ -130,12 +184,11 @@
             </blockquote>
         </section>
 
-        <!-- Footer -->
         <footer>
-            <p>&copy; 2025 Tribute by [Your Name] | This is a fan project inspired by Masashi Kishimoto’s Naruto series.</p>
+            <p>&copy; 2025 Tribute by <a href="https://thelastmercy.github.io" target="_blank">David Vrtílek</a> | This is a fan school project inspired by Naruto series.</p>
         </footer>
 
         <!-- Sharingan -->
-        <div class="sharingan-cursor"></div>
+        <!-- <div class="sharingan-cursor"></div> -->
     </body>
 </html>

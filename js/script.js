@@ -1,12 +1,3 @@
-// Smooth Scroll (modern browsers have it natively, but let’s make sure)
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
-      target?.scrollIntoView({ behavior: 'smooth' });
-    });
-  });
-  
   // Quote Typer Jutsu
   const quotes = [
     "Those who cannot acknowledge themselves will eventually fail.",
@@ -83,4 +74,33 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     }, { threshold: 0.1 });
     
     document.querySelectorAll('.timeline-item').forEach(el => observer.observe(el));
+
+// Mobile menu toggle
+const menuToggle = document.querySelector('.sharingan-menu');
+const navLinks = document.querySelector('.nav-links');
+
+menuToggle?.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    menuToggle.classList.toggle('active');
+});
+
+// Zavření menu při kliknutí mimo nebo na odkaz
+document.addEventListener('click', (e) => {
+    if (window.innerWidth > 768) return;
+    
+    if (!e.target.closest('.navbar') && navLinks?.classList.contains('active')) {
+        navLinks.classList.remove('active');
+        menuToggle?.classList.remove('active');
+    }
+});
+
+// Zavření menu po kliknutí na odkaz
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        if (window.innerWidth <= 768) {
+            navLinks.classList.remove('active');
+            menuToggle?.classList.remove('active');
+        }
+    });
+});
   

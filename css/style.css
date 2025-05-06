@@ -1,16 +1,59 @@
-/* Google Fonts (Unbounded used in HTML) */
-@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&display=swap');
+/*
+* Author: David Vrtílek
+*/
 
+/** ================== Google fonts ================== **/
+@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css');
+
+
+/** ================== Parameters ================== **/
 :root {
     --primary: #e60000;
     --bg: #0b0b0c;
     --text: #f5f5f5;
     --accent: #ff2e63;
     --muted: #999;
+    --font-ubounded: 'Unbounded', sans-serif;
+    --font-awesome: 'Font Awesome 6 Free';
 }
 
-/* === MOBILE STYLES === */
+html, 
+body {
+    font-family: var(--font-ubounded);
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/** ================== End of parameters ================== **/
+
+
+/** ================== Responsive design ================== **/
 @media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        gap: 1rem;
+        background-color: rgba(11, 11, 12, 0.95);
+        padding: 1rem;
+        position: absolute;
+        top: 100%;
+        left: 0%;
+        width: 100%;
+        z-index: 101;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
+    }
+
+    .nav-links.active {
+        display: flex;
+        padding: 1rem 2rem 2rem 2rem;
+        gap: 3rem;
+    } 
+    
     .hero {
         flex-direction: column;
         text-align: center;
@@ -24,23 +67,30 @@
     .hero-text p {
         font-size: 1rem;
     }
-
-    .bio-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .nav-links {
+    
+    .bio-card {
         flex-direction: column;
-        align-items: center;
-        gap: 1rem;
+        min-height: auto;
     }
-
-    .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
+    
+    #biography .bio-image {
+        width: 100%;
+        height: 200px;
+        order: -1;
     }
 
     .abilities-list li {
         font-size: 0.95rem;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-auto-rows: 150px;
+    }
+
+    .gallery-grid img:nth-child(n) {
+        grid-row: span 1;
+        grid-column: span 1;
     }
 
     .content-section {
@@ -54,145 +104,135 @@
     }
 }
   
-/* === DESKTOP STYLES === */
+/** =========== All sections =========== **/
 @media (min-width: 769px) {
-    .gallery-grid {
-        grid-template-columns: repeat(4, 1fr);
+    header .sharingan-menu {
+        display: none;
     }
 
-    .bio-grid {
+    header .nav-links {
+        display: flex;
+    }
+
+    #biography .bio-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+    
+    #gallery .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))
     }
 
     .hero-text h1 {
         font-size: 3.5rem;
     }
 }
+/** ================== End of responsive design ================== **/
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
-body {
-    font-family: 'Unbounded', sans-serif;
-    background-color: var(--bg);
-    color: var(--text);
-    line-height: 1.6;
-    scroll-behavior: smooth;
-}
-
-/* Navigation */
+/** ================== Header ================== **/
 header {
     position: sticky;
     top: 0;
     background: rgba(11, 11, 12, 0.95);
-    z-index: 999;
-    padding: 1rem 2rem;
+    z-index: 100;
+    padding: 1rem 0rem;
     backdrop-filter: blur(8px);
     box-shadow: 0 0 10px rgba(255, 0, 0, 0.1);
-}
-
-.loader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--bg);
-    z-index: 9999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: opacity 1s;
-}
-  
-.sharingan-loader {
-    width: 100px;
-    height: 100px;
-    border: 4px solid var(--primary);
-    border-radius: 50%;
-    animation: sharingan-spin 2s infinite linear;
 }
 
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 
-.navbar {
-    position: relative;
-    overflow: hidden;
+.navbar .logo a {
+    padding: 1rem 2rem;
 }
-  
-.navbar::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(
-        45deg,
-        transparent 45%,
-        var(--primary) 50%,
-        transparent 55%
-    );
-    opacity: 0.1;
-    animation: cloak-flow 20s infinite linear;
+
+.navbar button {
+    padding: 0.5rem 2rem;
 }
-  
-@keyframes cloak-flow {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+
+.sharingan-menu {
+    display: block;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.sharingan-menu img {
+    width: 40px;
+    height: 40px;
+    transition: all 0.3s ease;
+}
+
+.sharingan-menu img:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 5px rgba(230, 0, 0, 0.5));
+}
+
+.sharingan-menu.active img {
+    animation: sharingan-spin 1s linear;
+}
+
+@keyframes sharingan-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
 .nav-links {
-    display: flex;
+    display: none;
     gap: 2rem;
     list-style: none;
+    padding-right: 40px;
 }
 
+.logo a,
 .nav-links a {
     text-decoration: none;
     color: var(--text);
     transition: 0.3s;
 }
 
+.logo a:hover,
 .nav-links a:hover {
     color: var(--primary);
+    filter: drop-shadow(0 0 5px rgba(230, 0, 0, 0.5));
 }
+/** ================== End of header ================== **/
 
-/* Hero Section */
+
+/** ================== Hero section ================== **/
 .hero {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    padding: 4rem 2rem;
+    padding: 4rem 5rem;
     background: radial-gradient(circle at center, #1a1a1a, #0b0b0c);
 }
 
 .hero::after {
     content: '';
     position: absolute;
-    width: 300px;
-    height: 300px;
+    width: 500px;
+    height: 500px;
     background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
     opacity: 0.1;
     animation: sharingan-pulse 8s infinite;
-  }
+}
   
-  @keyframes sharingan-pulse {
+@keyframes sharingan-pulse {
     0% { transform: scale(0.8); opacity: 0.1; }
     50% { transform: scale(1.2); opacity: 0.2; }
     100% { transform: scale(0.8); opacity: 0.1; }
-  }
+}
 
 .hero-text {
-    flex: 1 1 45%;
+    flex: 1 1 45%;      /* flex-grow | flex-shrink | flex-basis */
 }
 
 .hero-text h1 {
@@ -206,11 +246,12 @@ header {
 }
 
 .hero-image {
-    flex: 1 1 45%;
+    flex: 1 1 45%;      /* flex-grow | flex-shrink | flex-basis */
     text-align: center;
 }
 
 .hero-image img {
+    max-height: 900px;
     max-width: 90%;
     filter: grayscale(40%);
     transition: 0.4s ease;
@@ -219,8 +260,11 @@ header {
 .hero-image img:hover {
     filter: grayscale(0%) drop-shadow(0 0 10px var(--primary));
 }
+/** ================== End of hero section ================== **/
 
-/* Sections */
+
+/** ================== Sections ================== **/
+/** =========== All sections =========== **/
 .content-section {
     padding: 4rem 2rem;
     max-width: 1200px;
@@ -232,46 +276,167 @@ header {
     color: var(--accent);
     margin-bottom: 1.5rem;
 }
+/** =========== End of all sections =========== **/
 
-/* Bio grid */
+/** =========== Biography =========== **/
 .bio-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
 }
 
-/* Abilities List */
-.abilities-list {
+.bio-card {
+    background-color: #1a1a1a;
+    padding: 2rem;
+    border-radius: 10px;
+    border-left: 5px solid var(--primary);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    min-height: 250px;
+}
+
+.bio-content {
+    flex: 1;
+}
+
+.bio-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    align-self: center;
+    border: 2px solid var(--primary);
+    transition: transform 0.3s ease;
+}
+
+.bio-card:hover .bio-image {
+    transform: rotate(5deg) scale(1.05);
+}
+
+.bio-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(255, 0, 0, 0.25);
+}
+
+.bio-card h3 {
+    font-size: 1.5rem;
+    color: var(--accent);
+    margin-bottom: 0.8rem;
+}
+
+.bio-card p {
+    font-size: 1rem;
+    color: var(--text);
+}
+
+.timeline-list {
     list-style: none;
     padding: 0;
 }
 
-.abilities-list li {
-    margin-bottom: 1rem;
+.timeline-list li {
+    margin-bottom: 0.7rem;
     padding-left: 1rem;
-    border-left: 4px solid var(--primary);
+    border-left: 3px solid var(--accent);
+    color: var(--text);
+    font-size: 0.95rem;
+    position: relative;
+}
+/** =========== End of biography =========== **/
+
+/** =========== Abilities =========== **/
+#abilities {
+    background-color: var(--bg);
 }
 
-/* Gallery */
+.abilities-grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.ability-card {
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.ability-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(255, 0, 0, 0.25);
+    transition: transform 0.3s ease;
+}
+
+.ability-image {
+    height: 220px;
+    overflow: hidden;
+}
+
+.ability-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.ability-card:hover .ability-image img {
+    transform: scale(1.05);
+}
+
+.ability-content {
+    padding: 1.2rem;
+}
+
+.ability-content h3 {
+    font-size: 1.3rem;
+    color: var(--accent);
+    margin-bottom: 0.3rem;
+}
+
+.ability-sub {
+    font-size: 0.95rem;
+    color: var(--muted);
+    margin-bottom: 0.8rem;
+}
+
+.ability-content p {
+    color: var(--text);
+    font-size: 1rem;
+}
+/** =========== End of abilities =========== **/
+
+/** =========== Gallery =========== **/
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-auto-rows: 200px;
+    grid-auto-flow: dense;
 }
 
 .gallery-grid img {
     width: 100%;
-    border-radius: 10px;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
     transition: 0.3s;
     cursor: pointer;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
 }
+
+.gallery-grid img:nth-child(1) { grid-row: span 2; }
+.gallery-grid img:nth-child(2) { grid-column: span 2; }
 
 .gallery-grid img:hover {
     transform: scale(1.05);
     box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
 }
+/** =========== End of gallery =========== **/
 
-/* Quotes */
+/** =========== Quotes =========== **/
 .quotes-section blockquote {
     font-style: italic;
     font-size: 1.3rem;
@@ -280,8 +445,11 @@ header {
     padding-left: 1rem;
     margin-bottom: 2rem;
 }
+/** =========== End of quotes =========== **/
+/** ================== End of sections ================== **/
 
-/* Footer */
+
+/** ================== Footer ================== **/
 footer {
     background: #111;
     text-align: center;
@@ -290,6 +458,20 @@ footer {
     color: var(--muted);
 }
 
+footer a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+    text-shadow: pink 0px 0px 1px;
+    filter: drop-shadow(0 0 5px rgba(230, 0, 0, 0.5));
+}
+/** ================== End of footer ================== **/
+
+
+/** ================== Dark toggle ================== **/
 .dark-toggle {
     position: fixed;
     bottom: 20px;
@@ -313,57 +495,10 @@ body.light-mode {
     --accent: #c40000;
     --primary: #8b0000;
 }
+/** ================== End of dark toggle ================== **/
 
-/* Modal gallery */
-.modal {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw; height: 100vh;
-    background: rgba(0,0,0,0.85);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-}
 
-.modal-content img {
-    max-width: 90%;
-    max-height: 80vh;
-    border: 5px solid var(--primary);
-    border-radius: 10px;
-}
-
-.sharingan-cursor {
-    position: fixed;
-    width: 40px;
-    height: 40px;
-    background: url('assets/sharingan-pattern.png') center/cover;
-    pointer-events: none;
-    mix-blend-mode: screen;
-    transition: transform 0.3s;
-}
-
-.timeline-item {
-    opacity: 0;
-    transform: translateX(-50px);
-    transition: all 0.8s ease;
-}
-  
-.timeline-item.visible {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-.susanoo-card {
-    transform: perspective(1000px) rotateY(0deg);
-    transition: transform 0.5s, box-shadow 0.5s;
-}
-  
-.susanoo-card:hover {
-    transform: perspective(1000px) rotateY(15deg);
-    box-shadow: 0 0 30px var(--primary);
-}
-
+/** ================== Kanji ================== **/
 .kanji-overlay {
     position: absolute;
     font-size: 4rem;
@@ -376,4 +511,4 @@ body.light-mode {
     0% { transform: translateY(-50%) rotate(0deg); }
     100% { transform: translateY(50%) rotate(360deg); }
 }
-  
+/** ================== End of kanji ================== **/  
