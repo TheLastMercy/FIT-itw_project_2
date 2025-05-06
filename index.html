@@ -24,7 +24,7 @@
         <script src="js/toggleDWmode.js" defer></script>
 
     </head>
-    <body>
+    <body id="body">
         <header>
             <nav class="navbar">
                 <div class="logo"><a href="https://www.stud.fit.vutbr.cz/~xvrtild00/" target="_blank">ITACHI</a></div>
@@ -32,7 +32,7 @@
                     <img src="assets/itachi-mangekyou.png" alt="Menu"/>
                 </button>
                 <ul class="nav-links">
-                    <li><a href="#intro">Home</a></li>
+                    <li><a href="#body">Home</a></li>
                     <li><a href="#biography">Biography</a></li>
                     <li><a href="#abilities">Abilities</a></li>
                     <li><a href="#gallery">Gallery</a></li>
@@ -100,7 +100,7 @@
                             <li><strong>Final Act:</strong> Dies by Sasuke’s hand, truth revealed</li>
                         </ul>
                     </div>
-                    <img src="assets/itachi-timeline.jpg" alt="Itachi timeline" class="bio-image">
+                    <img src="assets/itachi.jpg" alt="Itachi timeline" class="bio-image">
                 </article>
             </div>
         </section>
@@ -180,15 +180,30 @@
             </blockquote>
             <blockquote>
                 <p>"Those who cannot acknowledge themselves..."</p>
-                <div class="kanji-overlay">自己</div>
+                <!-- <div class="kanji-overlay">自己</div> -->
             </blockquote>
         </section>
 
-        <footer>
-            <p>&copy; 2025 Tribute by <a href="https://thelastmercy.github.io" target="_blank">David Vrtílek</a> | This is a fan school project inspired by Naruto series.</p>
+        <footer id="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-logo">
+                        <img src="assets/uchiha-emblem.png" alt="Uchiha Clan Emblem">
+                    </div>
+                    <div class="footer-links">
+                        <ul>
+                            <li><a href="#body"><i class="fas fa-crow"></i> Home</a></li>
+                            <li><a href="#biography"><i class="fas fa-scroll"></i> Biography</a></li>
+                            <li><a href="#abilities"><i class="fas fa-eye"></i> Abilities</a></li>
+                            <li><a href="#gallery"><i class="fas fa-image"></i> Gallery</a></li>
+                            <li><a href="#quotes"><i class="fas fa-quote-right"></i> Quotes</a></li>
+                        </ul>
+                    </div>
+                    <div class="copyright">
+                        <p>© 2025 Tribute by <a href="https://thelastmercy.github.io" target="_blank">David Vrtílek</a> | This is a fan school project inspired by Naruto series.</p>
+                    </div>
+                </div>
+            </div>
         </footer>
-
-        <!-- Sharingan -->
-        <!-- <div class="sharingan-cursor"></div> -->
     </body>
 </html>
