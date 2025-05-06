@@ -26,42 +26,12 @@
       typeQuote();
     }, 6000);
   }
-  
-  // Optional: Dark Mode Toggle (Bonus Ninja Tool)
-  const darkToggle = document.createElement('button');
-  darkToggle.innerText = '☾';
-  darkToggle.className = 'dark-toggle';
-  document.body.appendChild(darkToggle);
-  
-  darkToggle.addEventListener('click', () => {
-    document.body.classList.toggle('light-mode');
-  });
-  
-  // Optional Modal Gallery
-  document.querySelectorAll('.gallery-grid img').forEach(img => {
-    img.addEventListener('click', () => {
-      const modal = document.createElement('div');
-      modal.classList.add('modal');
-      modal.innerHTML = `<div class="modal-content">
-        <img src="${img.src}" alt="${img.alt}" />
-      </div>`;
-      document.body.appendChild(modal);
-      modal.addEventListener('click', () => modal.remove());
-    });
-  });
 
     // Kurzor s Sharinganem
     document.addEventListener('mousemove', (e) => {
         const sharingan = document.querySelector('.sharingan-cursor');
         sharingan.style.left = `${e.clientX - 20}px`;
         sharingan.style.top = `${e.clientY - 20}px`;
-    });
-
-    // Paralaxa
-    window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
-        document.querySelector('.hero-image img').style.transform = 
-        `translateY(${scrolled * 0.3}px)`;
     });
 
     // Intersection Observer pro animace
@@ -74,33 +44,3 @@
     }, { threshold: 0.1 });
     
     document.querySelectorAll('.timeline-item').forEach(el => observer.observe(el));
-
-// Mobile menu toggle
-const menuToggle = document.querySelector('.sharingan-menu');
-const navLinks = document.querySelector('.nav-links');
-
-menuToggle?.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    menuToggle.classList.toggle('active');
-});
-
-// Zavření menu při kliknutí mimo nebo na odkaz
-document.addEventListener('click', (e) => {
-    if (window.innerWidth > 768) return;
-    
-    if (!e.target.closest('.navbar') && navLinks?.classList.contains('active')) {
-        navLinks.classList.remove('active');
-        menuToggle?.classList.remove('active');
-    }
-});
-
-// Zavření menu po kliknutí na odkaz
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        if (window.innerWidth <= 768) {
-            navLinks.classList.remove('active');
-            menuToggle?.classList.remove('active');
-        }
-    });
-});
-  

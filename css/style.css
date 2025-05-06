@@ -1,5 +1,5 @@
 /*
-* Author: David Vrtílek
+* Author: David Vrtílek - check out footer for more info
 */
 
 /** ================== Google fonts ================== **/
@@ -15,8 +15,11 @@
     --text: #f5f5f5;
     --accent: #ff2e63;
     --muted: #999;
+
     --font-ubounded: 'Unbounded', sans-serif;
     --font-awesome: 'Font Awesome 6 Free';
+
+    --animation-duration: 0.5s;
 }
 
 html, 
@@ -84,14 +87,14 @@ body {
         font-size: 0.95rem;
     }
 
-    .gallery-grid {
-        grid-template-columns: 1fr 1fr;
-        grid-auto-rows: 150px;
+    #gallery .gallery-grid {
+        display: flex;
+        flex-direction: column;
     }
 
-    .gallery-grid img:nth-child(n) {
-        grid-row: span 1;
-        grid-column: span 1;
+    .gallery-grid .gallery-subgrid:nth-of-type(2),
+    .gallery-grid .gallery-subgrid:nth-of-type(3) {
+        display: none;
     }
 
     .content-section {
@@ -110,7 +113,7 @@ body {
         text-align: center;
     }
     
-    .footer-links ul {
+    #footer .footer-links ul {
         grid-template-columns: 1fr;
         gap: 1.5rem;
     }
@@ -142,9 +145,9 @@ body {
         grid-template-columns: repeat(2, 1fr);
     }
     
-    #gallery .gallery-grid {
+    /* #gallery .gallery-grid {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))
-    }
+    } */
 
     .hero-text h1 {
         font-size: 3.5rem;
@@ -190,7 +193,7 @@ header {
 .sharingan-menu img {
     width: 40px;
     height: 40px;
-    transition: all 0.3s ease;
+    transition-duration: var(--animation-duration);
 }
 
 .sharingan-menu img:hover {
@@ -218,13 +221,13 @@ header {
 .nav-links a {
     text-decoration: none;
     color: var(--text);
-    transition: 0.3s;
+    transition-duration: var(--animation-duration);
 }
 
 .logo a:hover,
 .nav-links a:hover {
     color: var(--primary);
-    filter: drop-shadow(0 0 5px rgba(230, 0, 0, 0.5));
+    filter: drop-shadow(0 0 8px rgba(230, 0, 0, 0.5));
 }
 /** ================== End of header ================== **/
 
@@ -278,13 +281,14 @@ header {
     max-height: 900px;
     max-width: 90%;
     filter: grayscale(40%);
-    transition: 0.4s ease;
+    transition-duration: var(--animation-duration);
     border-radius: 20px;
 }
 
 .hero-image img:hover {
     filter: grayscale(0%) drop-shadow(0 0 10px var(--primary));
     transform: scale(1.02);
+    cursor: pointer;
 }
 /** ================== End of hero section ================== **/
 
@@ -316,7 +320,7 @@ header {
     padding: 2rem;
     border-radius: 10px;
     border-left: 5px solid var(--primary);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition-duration: var(--animation-duration);
     display: flex;
     gap: 1.5rem;
     padding: 1.5rem;
@@ -334,7 +338,7 @@ header {
     border-radius: 8px;
     align-self: center;
     border: 2px solid var(--primary);
-    transition: transform 0.3s ease;
+    transition-duration: var(--animation-duration);
 }
 
 .bio-card:hover .bio-image {
@@ -344,6 +348,10 @@ header {
 .bio-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 10px 25px rgba(255, 0, 0, 0.25);
+}
+
+.bio-card .bio-image:hover {
+    cursor: pointer;
 }
 
 .bio-card h3 {
@@ -387,13 +395,13 @@ header {
     background-color: #1a1a1a;
     border-radius: 10px;
     overflow: hidden;
-    transition: transform 0.3s ease;
+    transition-duration: var(--animation-duration);
 }
 
 .ability-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 10px 25px rgba(255, 0, 0, 0.25);
-    transition: transform 0.3s ease;
+    transition-duration: var(--animation-duration);
 }
 
 .ability-image {
@@ -405,11 +413,15 @@ header {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease;
+    transition-duration: var(--animation-duration);
 }
 
 .ability-card:hover .ability-image img {
     transform: scale(1.05);
+}
+
+.ability-card .ability-image img:hover {
+    cursor: pointer;
 }
 
 .ability-content {
@@ -437,28 +449,35 @@ header {
 /** =========== Gallery =========== **/
 .gallery-grid {
     display: grid;
-    gap: 1.5rem;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    grid-auto-rows: 200px;
-    grid-auto-flow: dense;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 10px;
 }
-
-.gallery-grid img {
+  
+.gallery-subgrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+}
+  
+.gallery-subgrid img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 8px;
-    transition: 0.3s;
+    filter: grayscale(20%);
+}
+  
+.gallery-subgrid img:hover {
+    transform: scale(1.05);
+    transition-duration: var(--animation-duration);
     cursor: pointer;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    filter: grayscale(0%) drop-shadow(0 0 10px var(--primary));
+    z-index: 50;
 }
 
-.gallery-grid img:nth-child(1) { grid-row: span 2; }
-.gallery-grid img:nth-child(2) { grid-column: span 2; }
-
-.gallery-grid img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
+.rowspan {
+    grid-row: span 2;
 }
 /** =========== End of gallery =========== **/
 
@@ -485,7 +504,7 @@ footer {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 2.5rem;
     position: relative;
 }
 
@@ -497,16 +516,21 @@ footer {
     flex-wrap: wrap;
 }
 
+.footer-logo {
+    height: 100px;
+}
+
 .footer-logo img {
     width: 100px;
     height: auto;
-    transition: transform 0.3s ease;
+    transition-duration: var(--animation-duration);
     filter: grayscale(40%);
 }
 
-.footer-logo:hover img {
+.footer-logo img:hover {
     transform: scale(1.1);
     filter: grayscale(20%) drop-shadow(0 0 2px var(--primary));
+    cursor: pointer;
 }
 
 .footer-links ul {
@@ -523,7 +547,7 @@ footer {
     display: flex;
     align-items: center;
     gap: 0.8rem;
-    transition: color 0.3s ease;
+    transition-duration: var(--animation-duration);
 }
 
 .footer-links a:hover {
@@ -554,6 +578,7 @@ footer {
     text-decoration: underline;
     text-shadow: pink 0px 0px 1px;
     filter: drop-shadow(0 0 5px rgba(230, 0, 0, 0.5));
+    transition-duration: var(--animation-duration);
 }
 /** ================== End of footer ================== **/
 
@@ -598,4 +623,24 @@ body.light-mode {
     0% { transform: translateY(-50%) rotate(0deg); }
     100% { transform: translateY(50%) rotate(360deg); }
 }
-/** ================== End of kanji ================== **/  
+/** ================== End of kanji ================== **/ 
+
+/** ================== Modal ================== **/
+.modal {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.modal-content img {
+    max-width: 90%;
+    max-height: 80vh;
+    border: 5px solid var(--primary);
+    border-radius: 10px;
+}
+/** ================== End of modal ================== **/
