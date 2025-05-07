@@ -447,7 +447,7 @@ header {
 
 .ability-trigger {
     border: none;
-    padding: 12px 25px;
+    padding: 8px 17px;
     border-radius: 50px;
     font-family: var(--font-ubounded);
     font-weight: 700;
@@ -457,16 +457,12 @@ header {
     position: relative;
     overflow: hidden;
     margin: 1rem 0;
-}
-
-.ability-trigger span {
-    position: relative;
-    z-index: 1;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    transition-duration: var(--animation-duration);
 }
 
 .ability-trigger:hover {
     filter: drop-shadow(0 0 5px rgba(230, 0, 0, 0.5));
+    color: var(--primary);
 }
 /** =========== End of abilities =========== **/
 
@@ -553,7 +549,7 @@ footer {
 
 .footer-logo img:hover {
     transform: scale(1.1);
-    filter: grayscale(20%) drop-shadow(0 0 2px var(--primary));
+    filter: grayscale(20%) drop-shadow(0 0 4px var(--primary));
     cursor: pointer;
 }
 
@@ -596,13 +592,13 @@ footer {
 .copyright a {
     color: var(--accent);
     text-decoration: none;
+    transition-duration: var(--animation-duration);
 }
 
 .copyright a:hover {
     text-decoration: underline;
     text-shadow: pink 0px 0px 1px;
     filter: drop-shadow(0 0 5px rgba(230, 0, 0, 0.5));
-    transition-duration: var(--animation-duration);
 }
 /** ================== End of footer ================== **/
 
@@ -685,11 +681,11 @@ body.light-mode {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    animation: sharingan-spin 2s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: sharingan-effect 2s cubic-bezier(0.4, 0, 0.2, 1);
     opacity: 0;
 }
 
-@keyframes sharingan-spin {
+@keyframes sharingan-effect {
     0% { 
         transform: translate(-50%, -50%) scale(0.2); 
         opacity: 1;
