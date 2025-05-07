@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="A tribute profile to Itachi Uchiha – the shadow hero of the Naruto universe.">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,9 +18,9 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         
         <!-- My files -->
-        <link rel="stylesheet" href="css/style.css"/>
+        <link rel="stylesheet" href="css/style.css">
         <script src="js/sharinganMenu.js" defer></script>
-        <script src="js/script.js" defer></script>
+        <script src="js/quotesSlider.js" defer></script>
         <script src="js/modalGallery.js" defer></script>
         <script src="js/abilityEffects.js" defer></script>
         <script src="js/toggleDWmode.js" defer></script>
@@ -30,7 +30,7 @@
             <nav class="navbar">
                 <div class="logo"><a href="https://www.stud.fit.vutbr.cz/~xvrtild00/" target="_blank">ITACHI</a></div>
                 <button class="sharingan-menu">
-                    <img src="assets/itachi-mangekyou.png" alt="Menu"/>
+                    <img src="assets/itachi-mangekyou.png" alt="Menu">
                 </button>
                 <ul class="nav-links">
                     <li><a href="#body">Home</a></li>
@@ -187,19 +187,31 @@
 
         <section id="quotes" class="content-section quotes-section">
             <h2>Quotes & Philosophy</h2>
-            <blockquote>
-                <p>"Those who cannot acknowledge themselves will eventually fail."</p>
-            </blockquote>
-            <blockquote>
-                <p>"You and I are flesh and blood. I’m always going to be there for you, even if it’s only as an obstacle for you to overcome."</p>
-            </blockquote>
-            <blockquote>
-                <p>"Knowledge and awareness are vague, and perhaps better called illusions. Everyone lives within their own subjective interpretation."</p>
-            </blockquote>
-            <blockquote>
-                <p>"Those who cannot acknowledge themselves..."</p>
-                <!-- <div class="kanji-overlay">自己</div> -->
-            </blockquote>
+            <div class="quotes-container">
+                <div class="quote active">
+                    <p>"Those who cannot acknowledge themselves will eventually fail."</p>
+                </div>
+                <div class="quote">
+                    <p>"You and I are flesh and blood. I’m always going to be there for you, even if it’s only as an obstacle for you to overcome."</p>
+                </div>
+                <div class="quote">
+                    <p>"Knowledge and awareness are vague, and perhaps better called illusions. Everyone lives within their own subjective interpretation."</p>
+                </div>
+                <div class="quote">
+                    <p>"People's lives don't end when they die. It ends when they lose faith."</p>
+                </div>
+                <div class="quote">
+                    <p>"The true measure of a shinobi is not how he lives, but how he dies."</p>
+                </div>
+                <div class="quote">
+                    <p>"You can’t bring back the dead, but you can honor their memory."</p>
+                </div>
+            </div>
+            <div class="quote-controls">
+                <button class="quote-prev"><i class="fas fa-chevron-left"></i></button>
+                <div class="quote-dots"></div>
+                <button class="quote-next"><i class="fas fa-chevron-right"></i></button>
+            </div>
         </section>
 
         <footer id="footer">

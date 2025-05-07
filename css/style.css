@@ -15,6 +15,7 @@
     --text: #f5f5f5;
     --accent: #ff2e63;
     --muted: #999;
+    --text-ligt-mode: #0b0b0c;
 
     --font-ubounded: 'Unbounded', sans-serif;
     --font-awesome: 'Font Awesome 6 Free';
@@ -32,6 +33,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    transition-duration: var(--animation-duration);
 }
 /** ================== End of parameters ================== **/
 
@@ -62,6 +64,11 @@ body {
         flex-direction: column;
         text-align: center;
         padding: 3rem 1rem;
+    }
+
+    #body .hero::after {
+        width: 300px;
+        height: 300px;
     }
 
     .hero-text h1 {
@@ -253,9 +260,18 @@ header {
 }
   
 @keyframes sharingan-pulse {
-    0% { transform: scale(0.8); opacity: 0.1; }
-    50% { transform: scale(1.2); opacity: 0.2; }
-    100% { transform: scale(0.8); opacity: 0.1; }
+    0% { 
+        transform: scale(0.8); 
+        opacity: 0.1; 
+    }
+    50% { 
+        transform: scale(1.2); 
+        opacity: 0.3; 
+    }
+    100% { 
+        transform: scale(0.8); 
+        opacity: 0.1; 
+    }
 }
 
 .hero-text {
@@ -381,10 +397,6 @@ header {
 /** =========== End of biography =========== **/
 
 /** =========== Abilities =========== **/
-#abilities {
-    background-color: var(--bg);
-}
-
 .abilities-grid {
     display: grid;
     gap: 2rem;
@@ -446,6 +458,7 @@ header {
 }
 
 .ability-trigger {
+    color: #0b0b0c;
     border: none;
     padding: 8px 17px;
     border-radius: 50px;
@@ -463,6 +476,7 @@ header {
 .ability-trigger:hover {
     filter: drop-shadow(0 0 5px rgba(230, 0, 0, 0.5));
     color: var(--primary);
+    transform: translateY(-2px);
 }
 /** =========== End of abilities =========== **/
 
@@ -502,13 +516,79 @@ header {
 /** =========== End of gallery =========== **/
 
 /** =========== Quotes =========== **/
-.quotes-section blockquote {
+.quotes-section {
+    position: relative;
+    min-height: 300px;
+}
+  
+.quotes-container {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+    text-align: center;
+    align-items: center;
+}
+  
+.quote {
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    transition: all 0.5s ease;
+    transform: translateY(20px);
+    text-align: center;
     font-style: italic;
-    font-size: 1.3rem;
-    color: var(--muted);
-    border-left: 4px solid var(--accent);
-    padding-left: 1rem;
-    margin-bottom: 2rem;
+    font-size: 1.4rem;
+}
+  
+.quote.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.quote p {
+    margin: 4rem 0 0 0;
+}
+  
+.quote-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+  
+.quote-controls button {
+    background: none;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    padding: 0.75rem 1rem;
+    border-radius: 50%;
+    cursor: pointer;
+    transition-duration: var(--animation-duration);
+}
+  
+.quote-controls button:hover {
+    background: var(--primary);
+    color: var(--text);
+}
+  
+.quote-dots {
+    display: flex;
+    gap: 0.5rem;
+}
+  
+.quote-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--muted);
+    cursor: pointer;
+    transition-duration: var(--animation-duration);
+}
+  
+.quote-dot.active {
+    background: var(--primary);
+    transform: scale(1.2);
 }
 /** =========== End of quotes =========== **/
 /** ================== End of sections ================== **/
@@ -622,28 +702,61 @@ footer {
 }
 
 body.light-mode {
-    --bg: #f2f2f2;
-    --text: #111;
-    --accent: #c40000;
-    --primary: #8b0000;
+    --bg: #f0f0f0;
+    --accent: #c00000;
+}
+
+.light-mode .hero-image img,
+.light-mode .bio-image,
+.light-mode .ability-image img {
+  filter: brightness(0.9) contrast(1.1);
+}
+
+.light-mode .hero {
+    background: radial-gradient(circle at center, #f0f0f0, #e0e0e0);
+}
+
+.light-mode .hero::after {
+    background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+    opacity: 0.5;
+    animation: light-mode-sharingan-pulse 8s infinite;
+}
+
+@keyframes light-mode-sharingan-pulse {
+    0% { 
+        transform: scale(0.8); 
+        opacity: 0.5; 
+    }
+    50% { 
+        transform: scale(1.2); 
+        opacity: 0.7; 
+    }
+    100% { 
+        transform: scale(0.8); 
+        opacity: 0.5; 
+    }
+}
+
+.light-mode .hero p {
+    color: var(--text-ligt-mode);
+}
+
+.light-mode #gallery p {
+    color: var(--text-ligt-mode);
+}
+
+.light-mode .quotes-container p {
+    color: var(--text-ligt-mode);
+}
+
+.light-mode .quote-dot {
+    background: var(--text-ligt-mode);
+}
+
+.light-mode .quote-dot.active {
+    background: var(--primary);
 }
 /** ================== End of dark toggle ================== **/
-
-
-/** ================== Kanji ================== **/
-.kanji-overlay {
-    position: absolute;
-    font-size: 4rem;
-    opacity: 0.05;
-    pointer-events: none;
-    animation: kanji-float 20s infinite linear;
-}
-  
-@keyframes kanji-float {
-    0% { transform: translateY(-50%) rotate(0deg); }
-    100% { transform: translateY(50%) rotate(360deg); }
-}
-/** ================== End of kanji ================== **/ 
 
 
 /** ================== Modal ================== **/
@@ -655,6 +768,7 @@ body.light-mode {
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
     z-index: 9999;
 }
 
