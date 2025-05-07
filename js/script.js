@@ -27,13 +27,6 @@
     }, 6000);
   }
 
-    // Kurzor s Sharinganem
-    document.addEventListener('mousemove', (e) => {
-        const sharingan = document.querySelector('.sharingan-cursor');
-        sharingan.style.left = `${e.clientX - 20}px`;
-        sharingan.style.top = `${e.clientY - 20}px`;
-    });
-
     // Intersection Observer pro animace
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {

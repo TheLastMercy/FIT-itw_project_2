@@ -444,6 +444,30 @@ header {
     color: var(--text);
     font-size: 1rem;
 }
+
+.ability-trigger {
+    border: none;
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-family: var(--font-ubounded);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    margin: 1rem 0;
+}
+
+.ability-trigger span {
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.ability-trigger:hover {
+    filter: drop-shadow(0 0 5px rgba(230, 0, 0, 0.5));
+}
 /** =========== End of abilities =========== **/
 
 /** =========== Gallery =========== **/
@@ -466,11 +490,11 @@ header {
     height: 100%;
     object-fit: cover;
     filter: grayscale(20%);
+    transition-duration: var(--animation-duration);
 }
   
 .gallery-subgrid img:hover {
     transform: scale(1.05);
-    transition-duration: var(--animation-duration);
     cursor: pointer;
     filter: grayscale(0%) drop-shadow(0 0 10px var(--primary));
     z-index: 50;
@@ -625,6 +649,7 @@ body.light-mode {
 }
 /** ================== End of kanji ================== **/ 
 
+
 /** ================== Modal ================== **/
 .modal {
     position: fixed;
@@ -644,3 +669,123 @@ body.light-mode {
     border-radius: 10px;
 }
 /** ================== End of modal ================== **/
+
+
+/** ================== Effects ================== **/
+.effect-overlay {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+
+.sharingan-effect {
+    width: 300px;
+    height: 300px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: sharingan-spin 2s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+}
+
+@keyframes sharingan-spin {
+    0% { 
+        transform: translate(-50%, -50%) scale(0.2); 
+        opacity: 1;
+    }
+    100% { 
+        transform: translate(-50%, -50%) scale(1.5) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+
+.tsukuyomi-effect {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        45deg,
+        #000,
+        #000 10px,
+        #4a0000 10px,
+        #4a0000 20px
+    );
+    animation: tsukuyomi 2.5s linear;
+}
+
+@keyframes tsukuyomi {
+    0% { 
+        opacity: 0; 
+    }
+    15% { 
+        opacity: 1; 
+        filter: hue-rotate(0deg); 
+    }
+    85% { 
+        filter: hue-rotate(1080deg); 
+    }
+    100% { 
+        opacity: 0; 
+    }
+}
+
+
+.amaterasu-effect {
+    position: fixed;  
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+        circle at 50% 50%,  
+        rgba(0,0,0,0.9) 0%, 
+        rgba(173, 0, 0, 0.8) 30%,  
+        transparent 70%
+    );
+    mix-blend-mode: multiply; 
+    animation: amaterasu 3s forwards;
+    pointer-events: none;
+}
+
+@keyframes amaterasu {
+    0% { 
+        opacity: 0; 
+        transform: scale(0.1); 
+    }
+    20% { 
+        opacity: 1; 
+        transform: scale(1.5);
+    }
+    100% { 
+        opacity: 0; 
+        transform: scale(3);
+    }
+}
+
+
+.susanoo-effect {
+    position: fixed;
+    width: 1000px;
+    height: 1500px;
+    background: url('../assets/susanoo-silhouette.png') no-repeat;
+    animation: susanoo 2.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes susanoo {
+    0% { 
+        transform: translateX(200%) scaleY(0.8);
+        opacity: 0.5;
+    }
+    70% {
+        opacity: 1;
+    }
+    100% { 
+        transform: translateX(0%) translateY(-10%) scaleY(1);
+        opacity: 0;
+    }
+}
+/** ================== End of effects ================== **/
